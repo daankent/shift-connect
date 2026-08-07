@@ -2,8 +2,8 @@
 
 ShiftConnect is an application where supermarket managers can post open shifts they have at their store they are unable to fill with their own team. Employees from other store can then register to work these shifts.
 
-[Frontend](./frontend/README.md)
-[Backend](./backend/README.md)
+[Frontend](./frontend)
+[Backend](./backend)
 
 ## Features
 
