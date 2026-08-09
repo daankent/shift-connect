@@ -7,7 +7,10 @@ import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
 import jakarta.persistence.Table
+import jakarta.validation.constraints.DecimalMax
+import jakarta.validation.constraints.DecimalMin
 import jakarta.validation.constraints.Pattern
+import java.math.BigDecimal
 import java.util.UUID
 
 @Entity
@@ -28,5 +31,15 @@ class Store(
 
     @Column(nullable = false)
     var address: String,
+
+    @field:DecimalMin("-90.0")
+    @field:DecimalMax("90.0")
+    @Column(nullable = false, precision = 9, scale = 6)
+    var lat: BigDecimal,
+
+    @field:DecimalMin("-180.0")
+    @field:DecimalMax("180.0")
+    @Column(nullable = false, precision = 9, scale = 6)
+    var lon: BigDecimal
 ) {
 }
