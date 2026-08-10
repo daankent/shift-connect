@@ -28,29 +28,31 @@ export function SidebarAccount() {
     <SidebarMenu>
       <SidebarMenuItem>
         <DropdownMenu>
-          <DropdownMenuTrigger >
-            <SidebarMenuButton
-              size="lg"
-              className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
-            >
-              <Avatar className="h-8 w-8 rounded-lg">
-                <AvatarFallback className="rounded-lg bg-sidebar-primary text-white">
-                  VA
-                </AvatarFallback>
-              </Avatar>
+          <DropdownMenuTrigger
+            render={
+              <SidebarMenuButton
+                size="lg"
+                className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
+              >
+                <Avatar className="h-8 w-8 rounded-lg">
+                  <AvatarFallback className="rounded-lg bg-sidebar-primary text-white">
+                    VA
+                  </AvatarFallback>
+                </Avatar>
 
-              <div className="grid flex-1 text-left text-sm leading-tight">
-                <span className="truncate font-medium">
-                  Voornaam Achternaam
-                </span>
-                <span className="truncate text-xs">
-                  voornaam.achternaam@supermarkt.nl
-                </span>
-              </div>
+                <div className="grid flex-1 text-left text-sm leading-tight">
+                  <span className="truncate font-medium">
+                    Voornaam Achternaam
+                  </span>
+                  <span className="truncate text-xs">
+                    voornaam.achternaam@supermarkt.nl
+                  </span>
+                </div>
 
-              <ChevronsUpDown className="ml-auto size-4" />
-            </SidebarMenuButton>
-          </DropdownMenuTrigger>
+                <ChevronsUpDown className="ml-auto size-4" />
+              </SidebarMenuButton>
+            }
+          ></DropdownMenuTrigger>
           <DropdownMenuContent
             className="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg"
             side={isMobile ? "bottom" : "right"}
@@ -65,7 +67,7 @@ export function SidebarAccount() {
                       VA
                     </AvatarFallback>
                   </Avatar>
-                  <div className="grid flex-1 text-left text-sm leading-tight text-opacity-100">
+                  <div className="text-opacity-100 grid flex-1 text-left text-sm leading-tight">
                     <span className="truncate font-medium">
                       Voornaam Achternaam
                     </span>
