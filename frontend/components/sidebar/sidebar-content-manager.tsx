@@ -6,11 +6,9 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
 import {
-  Box,
   CalendarCheck2,
   ChevronRight,
   Layers,
-  LayoutList,
 } from "lucide-react"
 
 export function SidebarContentManager() {

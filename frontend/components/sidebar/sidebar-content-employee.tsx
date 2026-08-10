@@ -6,7 +6,6 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
 import {
-  Box,
   ChevronRight,
   Store,
   UserRoundCheck,
