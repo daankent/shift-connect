@@ -5,8 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { cn } from "@/lib/utils"
 
 import { TooltipProvider } from "@/components/ui/tooltip"
-import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar"
-import { AppSidebar } from "@/components/sidebar/sidebar"
+import React from "react"
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" })
 
@@ -34,14 +33,7 @@ export default function RootLayout({
       <body>
         <ThemeProvider>
           <TooltipProvider>
-            <SidebarProvider>
-              <AppSidebar />
-              <SidebarInset>
-                <main>
-                  {children}
-                </main>
-              </SidebarInset>
-            </SidebarProvider>
+            {children}
           </TooltipProvider>
         </ThemeProvider>
       </body>

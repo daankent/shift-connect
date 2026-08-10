@@ -21,6 +21,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { redirect } from "next/navigation"
 
 export function SidebarAccount() {
   const { isMobile } = useSidebar()
@@ -44,9 +45,7 @@ export function SidebarAccount() {
                   <span className="truncate font-medium">
                     Voornaam Achternaam
                   </span>
-                  <span className="truncate text-xs">
-                    voornaam.achternaam@supermarkt.nl
-                  </span>
+                  <span className="truncate text-xs">Manager / Medewerker</span>
                 </div>
 
                 <ChevronsUpDown className="ml-auto size-4" />
@@ -68,8 +67,11 @@ export function SidebarAccount() {
                     </AvatarFallback>
                   </Avatar>
                   <div className="text-opacity-100 grid flex-1 text-left text-sm leading-tight">
-                    <span className="truncate font-medium">
+                    <span className="truncate font-semibold">
                       Voornaam Achternaam
+                    </span>
+                    <span className="truncate text-xs font-medium">
+                      Manager
                     </span>
                     <span className="truncate text-xs">
                       voornaam.achternaam@supermarkt.nl
@@ -88,7 +90,10 @@ export function SidebarAccount() {
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
-            <DropdownMenuItem className={"text-red-700"}>
+            <DropdownMenuItem
+              className={"text-red-700"}
+              onClick={() => redirect("/auth/login")}
+            >
               <LogOut />
               Log out
             </DropdownMenuItem>
