@@ -1,6 +1,9 @@
-package com.shiftconnect.backend
+package com.shiftconnect.backend.dataseeders
 
 
+import com.shiftconnect.backend.accounts.application.AccountService
+import com.shiftconnect.backend.accounts.application.dto.AccountCreationRequestDTO
+import com.shiftconnect.backend.accounts.domain.AccountRole
 import com.shiftconnect.backend.stores.data.StoreRepository
 import com.shiftconnect.backend.stores.domain.Store
 import org.springframework.boot.ApplicationArguments
@@ -9,8 +12,9 @@ import org.springframework.stereotype.Component
 
 
 @Component
-class Dataseeder(
-    private val storeRepository: StoreRepository
+class StoreDataSeeder(
+    private val storeRepository: StoreRepository,
+    private val accountService: AccountService
 ) : ApplicationRunner {
 
     override fun run(args: ApplicationArguments) {
@@ -89,5 +93,19 @@ class Dataseeder(
         storeRepository.save(store8)
         storeRepository.save(store9)
         storeRepository.save(store10)
+
+        accountService.createAccount(
+            AccountCreationRequestDTO(
+                firstName = "Daan",
+                lastName = "Kentrop",
+                email = "daan.kentrop@supermarkt.nl",
+                password = "password",
+                repeatPassword = "password",
+                role = AccountRole.MANAGER,
+                storeNumber = "1213"
+            )
+        )
+
+
     }
 }

@@ -1,5 +1,8 @@
 package com.shiftconnect.backend.config
 
+import io.swagger.v3.oas.models.security.SecurityRequirement
+import io.swagger.v3.oas.models.security.SecurityScheme
+import io.swagger.v3.oas.models.Components
 import io.swagger.v3.oas.models.OpenAPI
 import io.swagger.v3.oas.models.info.Info
 import org.springframework.context.annotation.Bean
@@ -10,12 +13,25 @@ class SwaggerConfig {
 
     @Bean
     fun customOpenAPI(): OpenAPI {
+        val securitySchemeName = "bearerAuth"
         return OpenAPI()
             .info(
                 Info()
                     .title("ShiftConnect API")
                     .version("1.0")
                     .description("API documentation for the ShiftConnect application, providing endpoints for managing open shifts, registrations, and related resources.")
+            ) .addSecurityItem(
+                SecurityRequirement().addList(securitySchemeName)
+            )
+            .components(
+                Components().addSecuritySchemes(
+                    securitySchemeName,
+                    SecurityScheme()
+                        .name(securitySchemeName)
+                        .type(SecurityScheme.Type.HTTP)
+                        .scheme("bearer")
+                        .bearerFormat("JWT")
+                )
             )
     }
 }
