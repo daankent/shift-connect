@@ -1,5 +1,6 @@
 package com.shiftconnect.backend.stores.domain
 
+import com.shiftconnect.backend.config.jpa.AuditableEntity
 import jakarta.persistence.CheckConstraint
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
@@ -41,5 +42,5 @@ class Store(
     @field:DecimalMax("180.0")
     @Column(nullable = false, precision = 9, scale = 6)
     var lon: BigDecimal
-) {
+): AuditableEntity() {
 }
