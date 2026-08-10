@@ -5,7 +5,13 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
-import { Box, ChevronRight } from "lucide-react"
+import {
+  Box,
+  ChevronRight,
+  Store,
+  UserRoundCheck,
+  UserRoundSearch,
+} from "lucide-react"
 
 export function SidebarContentEmployee() {
   return (
@@ -15,7 +21,7 @@ export function SidebarContentEmployee() {
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton tooltip={"tEst"}>
-              <Box />
+              <UserRoundSearch />
               <span>Open Shifts</span>
               <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
             </SidebarMenuButton>
@@ -24,7 +30,7 @@ export function SidebarContentEmployee() {
 
         <SidebarMenuItem>
           <SidebarMenuButton tooltip={"tEst"}>
-            <Box />
+            <Store />
             <span>Winkels</span>
             <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
           </SidebarMenuButton>
@@ -36,7 +42,7 @@ export function SidebarContentEmployee() {
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton tooltip={"tEst"}>
-              <Box />
+              <UserRoundCheck />
               <span>Toegewezen Shifts</span>
               <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
             </SidebarMenuButton>
