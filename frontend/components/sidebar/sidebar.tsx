@@ -7,6 +7,7 @@ import {
 import { Workflow } from "lucide-react"
 import { SidebarContentManager } from "@/components/sidebar/sidebar-content-manager"
 import { SidebarContentEmployee } from "@/components/sidebar/sidebar-content-employee"
+import { SidebarAccount } from "@/components/sidebar/sidebar-account"
 export function AppSidebar() {
   return (
     <Sidebar variant={"sidebar"} className={"p-2"}>
@@ -23,7 +24,9 @@ export function AppSidebar() {
         <SidebarContentEmployee />
         <SidebarContentManager />
       </SidebarContent>
-      <SidebarFooter />
+      <SidebarFooter>
+        <SidebarAccount />
+      </SidebarFooter>
     </Sidebar>
   )
 }
