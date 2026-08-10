@@ -2,7 +2,6 @@ package com.shiftconnect.backend.accounts.presentation
 
 import com.shiftconnect.backend.accounts.application.AccountService
 import com.shiftconnect.backend.accounts.application.dto.AccountMeResponseDTO
-import com.shiftconnect.backend.accounts.domain.AccountRole
 import com.shiftconnect.backend.config.ApiError
 import com.shiftconnect.backend.config.auth.RoleExpressions
 import io.swagger.v3.oas.annotations.Operation

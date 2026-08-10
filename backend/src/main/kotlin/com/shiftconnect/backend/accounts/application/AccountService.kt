@@ -60,8 +60,6 @@ class AccountService(
         val authentication = SecurityContextHolder.getContext().authentication ?: throw AccountNotFoundException()
         val jwt = authentication.principal as Jwt
 
-        println(jwt.getClaimAsString("roles"))
-
         val email = jwt.getClaimAsString("email") ?: throw AccountNotFoundException();
 
         return getAccountByEmail(email) ?: throw AccountNotFoundException()
