@@ -64,7 +64,7 @@ class AccountController(private val accountService: AccountService) {
             email = account.email,
             firstName = account.firstName,
             lastName = account.lastName,
-            role = account.role.name,
+            role = account.role,
             storeNumber = account.store.storeNumber
         )
     }

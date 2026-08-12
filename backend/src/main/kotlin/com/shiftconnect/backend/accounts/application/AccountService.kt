@@ -47,7 +47,7 @@ class AccountService(
             email = saved.email,
             firstName = saved.firstName,
             lastName = saved.lastName,
-            role = saved.role.name,
+            role = saved.role,
             storeNumber = saved.store.storeNumber
         )
     }
