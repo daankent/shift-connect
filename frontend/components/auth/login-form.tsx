@@ -14,9 +14,51 @@ import {
   FieldLabel,
 } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
-import { redirect } from "next/navigation"
+import { useRouter } from "next/navigation"
+import { useState } from "react"
+import {
+  Alert,
+  AlertDescription,
+  AlertTitle,
+} from "@/components/ui/alert"
+import { AlertCircle } from "lucide-react"
 
 export function LoginForm({ ...props }) {
+  const router = useRouter()
+  const [error, setError] = useState<string | null>(null)
+  const [isLoading, setIsLoading] = useState(false)
+  const [email, setEmail] = useState<string>("")
+  const [password, setPassword] = useState<string>("")
+
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+
+    setError(null)
+    setIsLoading(true)
+
+
+    const response = await fetch("/api/auth/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: email,
+        password: password,
+      }),
+    })
+
+    setIsLoading(false)
+
+    if (!response.ok) {
+      setError("E-mailadres of wachtwoord is onjuist")
+      return
+    }
+
+    router.push("/")
+    router.refresh()
+  }
+
   return (
     <div className={"flex flex-col gap-6"} {...props}>
       <Card>
@@ -27,13 +69,22 @@ export function LoginForm({ ...props }) {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <form>
+          {error && (
+            <Alert variant="destructive" className={"mb-4 bg-red-50 border-red-400"}>
+              <AlertCircle/>
+              <AlertTitle>Inloggen mislukt</AlertTitle>
+              <AlertDescription>{error}</AlertDescription>
+            </Alert>
+          )}
+          <form onSubmit={handleSubmit}>
             <FieldGroup>
               <Field>
                 <FieldLabel htmlFor="email">E-mailadres</FieldLabel>
                 <Input
                   id="email"
                   type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   placeholder="voornaam.achternaam@supermarkt.nl"
                   required
                   autoFocus={true}
@@ -43,10 +94,21 @@ export function LoginForm({ ...props }) {
                 <div className="flex items-center">
                   <FieldLabel htmlFor="password">Wachtwoord</FieldLabel>
                 </div>
-                <Input id="password" type="password" required />
+                <Input
+                  id="password"
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
               </Field>
               <Field>
-                <Button type={"button"} onClick={()=>{redirect("/")}}>Login</Button>
+                <Button
+                  type={"submit"}
+                  disabled={isLoading}
+                >
+                  {isLoading ? "Inloggen..." : "Login"}
+                </Button>
               </Field>
             </FieldGroup>
           </form>

@@ -5,19 +5,15 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
-import {
-  CalendarCheck2,
-  ChevronRight,
-  Layers,
-} from "lucide-react"
+import { CalendarCheck2, ChevronRight, Layers } from "lucide-react"
 
 export function SidebarContentManager() {
   return (
     <SidebarGroup>
-      <SidebarGroupLabel>Jouw Winkel (manager)</SidebarGroupLabel>
+      <SidebarGroupLabel>Jouw Winkel</SidebarGroupLabel>
       <SidebarMenu>
         <SidebarMenuItem>
-          <SidebarMenuButton tooltip={"tEst"}>
+          <SidebarMenuButton>
             <Layers />
             <span>Open Shifts</span>
             <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
@@ -25,7 +21,7 @@ export function SidebarContentManager() {
         </SidebarMenuItem>
 
         <SidebarMenuItem>
-          <SidebarMenuButton tooltip={"tEst"}>
+          <SidebarMenuButton>
             <CalendarCheck2 />
             <span>Geplande Shifts</span>
             <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />

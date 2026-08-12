@@ -17,17 +17,17 @@ export function SidebarContentEmployee() {
   return (
     <>
       <SidebarGroup>
-        <SidebarGroupLabel>Zoeken (medewerker)</SidebarGroupLabel>
+        <SidebarGroupLabel>Zoeken</SidebarGroupLabel>
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton tooltip={"tEst"}>
+            <SidebarMenuButton>
               <UserRoundSearch />
               <span>Open Shifts</span>
               <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
             </SidebarMenuButton>
           </SidebarMenuItem>
           <SidebarMenuItem>
-            <SidebarMenuButton tooltip={"tEst"}>
+            <SidebarMenuButton>
               <Store />
               <span>Winkels</span>
               <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
@@ -37,17 +37,17 @@ export function SidebarContentEmployee() {
       </SidebarGroup>
 
       <SidebarGroup>
-        <SidebarGroupLabel>Jouw Activiteiten (medewerker)</SidebarGroupLabel>
+        <SidebarGroupLabel>Jouw Activiteiten</SidebarGroupLabel>
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton tooltip={"tEst"}>
+            <SidebarMenuButton>
               <UserRoundPen />
               <span>Shift inschrijvingen</span>
               <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
             </SidebarMenuButton>
           </SidebarMenuItem>
           <SidebarMenuItem>
-            <SidebarMenuButton tooltip={"tEst"}>
+            <SidebarMenuButton>
               <UserRoundCheck />
               <span>Toegewezen Shifts</span>
               <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
