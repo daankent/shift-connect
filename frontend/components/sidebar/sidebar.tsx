@@ -10,11 +10,11 @@ import { SidebarAccount } from "@/components/sidebar/sidebar-account"
 import { Logo } from "@/components/logo"
 export function AppSidebar() {
   return (
-    <Sidebar variant={"sidebar"} className={"p-2"}>
-      <SidebarHeader>
+    <Sidebar variant={"sidebar"}>
+      <SidebarHeader className={"p-4"}>
         <Logo/>
       </SidebarHeader>
-      <SidebarContent>
+      <SidebarContent className={"p-2"}>
         <SidebarContentEmployee />
         <SidebarContentManager />
       </SidebarContent>
