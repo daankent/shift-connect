@@ -25,15 +25,14 @@ export function SidebarContentEmployee() {
               <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
             </SidebarMenuButton>
           </SidebarMenuItem>
+          <SidebarMenuItem>
+            <SidebarMenuButton tooltip={"tEst"}>
+              <Store />
+              <span>Winkels</span>
+              <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
+            </SidebarMenuButton>
+          </SidebarMenuItem>
         </SidebarMenu>
-
-        <SidebarMenuItem>
-          <SidebarMenuButton tooltip={"tEst"}>
-            <Store />
-            <span>Winkels</span>
-            <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
-          </SidebarMenuButton>
-        </SidebarMenuItem>
       </SidebarGroup>
 
       <SidebarGroup>
