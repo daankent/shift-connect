@@ -4,21 +4,15 @@ import { ACCESS_TOKEN_COOKIE } from "@/lib/auth-shared"
 
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl
-  const isLoggedIn = request.cookies.has(ACCESS_TOKEN_COOKIE)
+  const hasAccessToken = request.cookies.has(ACCESS_TOKEN_COOKIE)
 
-  if (pathname === "/auth/login" && isLoggedIn) {
-    return NextResponse.redirect(new URL("/", request.url))
-  }
-
-  if (pathname !== "/auth/login" && !isLoggedIn) {
-    const loginUrl = new URL("/auth/login", request.url)
-
-    return NextResponse.redirect(loginUrl)
+  if (pathname !== "/auth/login" && !hasAccessToken) {
+    return NextResponse.redirect(new URL("/auth/login", request.url))
   }
 
   return NextResponse.next()
 }
 
 export const config = {
-  matcher: ["/", "/auth/login"],
+  matcher: ["/", "/stores/:path*"],
 }

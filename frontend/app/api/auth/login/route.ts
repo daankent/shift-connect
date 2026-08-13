@@ -30,6 +30,7 @@ export async function POST(request: Request) {
     secure: isSecureRequest(request),
     sameSite: "lax",
     path: "/",
+    expires: new Date(Date.now() + 1000 * 60 * 59)
   })
 
   return response

@@ -25,7 +25,7 @@ class JwtTokenService(
             .issuer(jwtProperties.issuer)
             .audience(listOf(jwtProperties.audience))
             .issuedAt(now)
-            .expiresAt(now.plus(15, ChronoUnit.MINUTES))
+            .expiresAt(now.plus(jwtProperties.accessTokenMinutes, ChronoUnit.MINUTES))
             .subject(account.id.toString())
             .claim("email", account.email)
             .claim("roles", listOf(account.role))
