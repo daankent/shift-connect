@@ -7,6 +7,7 @@ import io.swagger.v3.oas.annotations.media.Content
 import io.swagger.v3.oas.annotations.responses.ApiResponse
 import io.swagger.v3.oas.annotations.tags.Tag
 import org.springframework.http.ResponseEntity
+import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
@@ -20,7 +21,7 @@ class StoreController(private val storeService: StoreService) {
     @GetMapping
     @Operation(
         summary = "Returns a list of all stores.",
-        description = "Retrieves a list of all stores available in the system.",
+        description = "Retrieves a list of all stores available in the system, sorted by store number from lowest to highest.",
         responses = [ApiResponse(
             responseCode = "200",
             description = "List of stores retrieved successfully",

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service
 
 @Service
 class StoreService(private val storeRepository: StoreRepository) {
-    fun getAllStores(): List<Store> = storeRepository.findAll()
+    fun getAllStores(): List<Store> = storeRepository.findAll().sortedBy { it.storeNumber }
 
     fun getStoreByStoreNumber(storeNumber: String): Store? =
         storeRepository.findByStoreNumber(storeNumber).firstOrNull() ?: throw StoreNotFoundException(storeNumber);
