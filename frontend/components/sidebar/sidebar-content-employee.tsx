@@ -12,6 +12,7 @@ import {
   UserRoundPen,
   UserRoundSearch,
 } from "lucide-react"
+import Link from "next/link"
 
 export function SidebarContentEmployee() {
   return (
@@ -28,9 +29,11 @@ export function SidebarContentEmployee() {
           </SidebarMenuItem>
           <SidebarMenuItem>
             <SidebarMenuButton>
-              <Store />
-              <span>Winkels</span>
-              <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
+              <Link href={"/stores"} className={"flex w-full items-center"}>
+                <Store />
+                <span className={"ml-2"}>Winkels</span>
+                <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
+              </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
