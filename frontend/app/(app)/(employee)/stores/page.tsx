@@ -3,11 +3,10 @@ import PageHeader from "@/components/page-header"
 import PageContainer from "@/components/page-container"
 import { apiFetch } from "@/lib/api"
 import { redirect } from "next/navigation"
-import { AlertCircle } from "lucide-react"
-import { Alert, AlertDescription } from "@/components/ui/alert"
 import StoresList from "@/components/stores/stores-list"
 import { Suspense } from "react"
 import StoreItemSkeleton from "@/components/stores/stores-item-skeleton"
+import ErrorAlert from "@/components/error-message"
 
 export type Store = {
   storeNumber: string
@@ -63,10 +62,7 @@ async function StoresPageContent() {
   }
 
   return errorMessage ? (
-    <Alert variant="destructive" className={"mb-4 border-red-400 bg-red-50"}>
-      <AlertCircle />
-      <AlertDescription>{errorMessage}</AlertDescription>
-    </Alert>
+    <ErrorAlert message={errorMessage} />
   ) : (
     <StoresList stores={stores} />
   )

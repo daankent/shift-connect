@@ -16,12 +16,7 @@ import {
 import { Input } from "@/components/ui/input"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
-import {
-  Alert,
-  AlertDescription,
-  AlertTitle,
-} from "@/components/ui/alert"
-import { AlertCircle } from "lucide-react"
+import ErrorAlert from "@/components/error-message"
 
 export function LoginForm({ ...props }) {
   const router = useRouter()
@@ -69,13 +64,7 @@ export function LoginForm({ ...props }) {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          {error && (
-            <Alert variant="destructive" className={"mb-4 bg-red-50 border-red-400"}>
-              <AlertCircle/>
-              <AlertTitle>Inloggen mislukt</AlertTitle>
-              <AlertDescription>{error}</AlertDescription>
-            </Alert>
-          )}
+          {error && <ErrorAlert title={"Inloggen mislukt"} message={error} />}
           <form onSubmit={handleSubmit}>
             <FieldGroup>
               <Field>
@@ -103,10 +92,7 @@ export function LoginForm({ ...props }) {
                 />
               </Field>
               <Field>
-                <Button
-                  type={"submit"}
-                  disabled={isLoading}
-                >
+                <Button type={"submit"} disabled={isLoading}>
                   {isLoading ? "Inloggen..." : "Login"}
                 </Button>
               </Field>
