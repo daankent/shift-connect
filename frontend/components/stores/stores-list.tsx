@@ -1,5 +1,4 @@
 "use client"
-
 import { Store } from "@/app/(app)/(employee)/stores/page"
 import {
   Select,
@@ -13,7 +12,7 @@ import StoreItem from "@/components/stores/stores-item"
 import { Field, FieldLabel } from "@/components/ui/field"
 import { useRef, useState } from "react"
 
-export default function StoresList({ stores }: { stores: Store[] }) {
+export default  function StoresList({ stores }: { stores: Store[] }) {
   const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc")
   const listTopRef = useRef<HTMLDivElement>(null)
 
@@ -29,7 +28,7 @@ export default function StoresList({ stores }: { stores: Store[] }) {
   ]
 
   function handleSortOrderChange(value: "asc" | "desc" | null) {
-    if (!value) return;
+    if (!value) return
 
     setSortOrder(value)
     listTopRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })

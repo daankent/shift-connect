@@ -6,6 +6,8 @@ import { redirect } from "next/navigation"
 import { AlertCircle } from "lucide-react"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import StoresList from "@/components/stores/stores-list"
+import { Suspense } from "react"
+import StoreItemSkeleton from "@/components/stores/stores-item-skeleton"
 
 export type Store = {
   storeNumber: string
@@ -15,9 +17,37 @@ export type Store = {
 }
 
 export default async function StoresPage() {
-  let stores: Store[] = [];
+  return (
+    <>
+      <AppHeader crumbs={[{ text: "Winkels" }]} />
+      <PageContainer>
+        <PageHeader
+          title="Winkels"
+          subtitle="Hier vind je alle winkels die in het systeem staan"
+        />
 
-  let errorMessage: string | null = null;
+        <Suspense
+          fallback={
+            <div className={"mt-16 flex flex-col gap-4"}>
+              <StoreItemSkeleton />
+              <StoreItemSkeleton />
+              <StoreItemSkeleton />
+              <StoreItemSkeleton />
+              <StoreItemSkeleton />
+            </div>
+          }
+        >
+          <StoresPageContent />
+        </Suspense>
+      </PageContainer>
+    </>
+  )
+}
+
+async function StoresPageContent() {
+  let stores: Store[] = []
+
+  let errorMessage: string | null = null
   try {
     const res = await apiFetch("/stores")
 
@@ -30,31 +60,14 @@ export default async function StoresPage() {
     stores = await res.json()
   } catch {
     errorMessage = "Er is iets misgegaan bij het ophalen van de winkels."
-
   }
 
-
-  return (
-    <>
-      <AppHeader crumbs={[{ text: "Winkels" }]} />
-      <PageContainer>
-        <PageHeader
-          title="Winkels"
-          subtitle="Hier vind je alle winkels die in het systeem staan"
-        />
-
-        {errorMessage ? (
-          <Alert
-            variant="destructive"
-            className={"mb-4 border-red-400 bg-red-50"}
-          >
-            <AlertCircle />
-            <AlertDescription>{errorMessage}</AlertDescription>
-          </Alert>
-        ) : (
-          <StoresList stores={stores}/>
-        )}
-      </PageContainer>
-    </>
+  return errorMessage ? (
+    <Alert variant="destructive" className={"mb-4 border-red-400 bg-red-50"}>
+      <AlertCircle />
+      <AlertDescription>{errorMessage}</AlertDescription>
+    </Alert>
+  ) : (
+    <StoresList stores={stores} />
   )
 }
