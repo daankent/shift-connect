@@ -13,6 +13,7 @@ import StoreItemSkeleton from "@/components/stores/stores-item-skeleton"
 import { redirect } from "next/navigation"
 import StoreCard from "@/components/stores/store/store-card"
 import ErrorAlert from "@/components/error-message"
+import StoreCardSkeleton from "@/components/stores/store/store-card-skeleton"
 
 export default async function StorePage({
   params,
@@ -36,7 +37,7 @@ export default async function StorePage({
           </Button>
         </Link>
 
-        <Suspense fallback={<StoreItemSkeleton />}>
+        <Suspense fallback={<StoreCardSkeleton />}>
           <StorePageContent storeNumber={storeNumber} />
         </Suspense>
       </PageContainer>
