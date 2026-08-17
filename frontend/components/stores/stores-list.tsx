@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/input-group"
 import { X, Search } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import StoreEmpty from "@/components/stores/stores-empty"
 
 export default  function StoresList({ stores }: { stores: Store[] }) {
   const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc");
@@ -48,6 +49,11 @@ export default  function StoresList({ stores }: { stores: Store[] }) {
     listTopRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })
   }
 
+  function handleResetSearchTerm() {
+    setSearchTerm("")
+    listTopRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })
+  }
+
   return (
     <>
       <div className="sticky top-30 z-10 mb-8 bg-background py-4">
@@ -70,7 +76,7 @@ export default  function StoresList({ stores }: { stores: Store[] }) {
                 <InputGroupAddon
                   align="inline-end"
                   title="Wis zoekopdracht"
-                  onClick={() => setSearchTerm("")}
+                  onClick={handleResetSearchTerm}
                 >
                   <Button variant={"outline"} size={"icon-sm"}>
                     <X />
@@ -78,9 +84,7 @@ export default  function StoresList({ stores }: { stores: Store[] }) {
                 </InputGroupAddon>
               )}
             </InputGroup>
-            <FieldDescription>
-              Zoek op winkelnummer of adres.
-            </FieldDescription>
+            <FieldDescription>Zoek op winkelnummer of adres.</FieldDescription>
           </Field>
 
           <Field className={"md:max-w-100"}>
@@ -110,6 +114,10 @@ export default  function StoresList({ stores }: { stores: Store[] }) {
       </div>
 
       <div ref={listTopRef} className="scroll-mt-78 md:scroll-mt-64" />
+
+      {filteredStores.length === 0 && (
+          <StoreEmpty resetSearchTerm={handleResetSearchTerm} />
+      )}
 
       {filteredStores.map((store) => (
         <StoreItem store={store} key={store.storeNumber} />
